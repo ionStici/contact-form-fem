@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import GlobalStyles from './styles/GlobalStyles';
 import Fieldset from './components/Fieldset';
+import { useForm } from 'react-hook-form';
 
 const Main = styled.main`
   padding: 3.2rem 1.6rem;
@@ -49,6 +50,8 @@ const Box = styled.div`
 `;
 
 function App() {
+  const { getValues } = useForm();
+
   return (
     <Main>
       <GlobalStyles />
