@@ -1,5 +1,43 @@
 import styled from 'styled-components';
-import { useForm } from 'react-hook-form';
+
+function Fieldset({ register }) {
+  return (
+    <StyledFieldset>
+      <Legend>
+        Query Type
+        <span>*</span>
+      </Legend>
+
+      <Label htmlFor="general-enquiry">
+        <input
+          type="radio"
+          name="query-type"
+          id="general-enquiry"
+          value="general-enquiry"
+          {...register('query-type', { required: 'Required' })}
+        />
+        <RadioButton className="radioButton" />
+        <span>General Enquiry</span>
+      </Label>
+
+      <Label htmlFor="support-request">
+        <input
+          type="radio"
+          name="query-type"
+          id="support-request"
+          value="support-request"
+          {...register('query-type', { required: 'Required' })}
+        />
+        <RadioButton className="radioButton" />
+        <span>Support Request</span>
+      </Label>
+    </StyledFieldset>
+  );
+}
+
+export default Fieldset;
+
+//
 
 const StyledFieldset = styled.fieldset`
   border: none;
@@ -76,40 +114,3 @@ const RadioButton = styled.div`
     transition: background-color 0.3s;
   }
 `;
-
-function Fieldset() {
-  const { register } = useForm();
-
-  return (
-    <StyledFieldset>
-      <Legend>
-        Query Type
-        <span>*</span>
-      </Legend>
-
-      <Label htmlFor="general-enquiry">
-        <input
-          type="radio"
-          name="query-type"
-          id="general-enquiry"
-          {...register('general-enquiry')}
-        />
-        <RadioButton className="radioButton" />
-        <span>General Enquiry</span>
-      </Label>
-
-      <Label htmlFor="support-request">
-        <input
-          type="radio"
-          name="query-type"
-          id="support-request"
-          {...register('support-request')}
-        />
-        <RadioButton className="radioButton" />
-        <span>Support Request</span>
-      </Label>
-    </StyledFieldset>
-  );
-}
-
-export default Fieldset;

@@ -34,7 +34,6 @@ const GlobalStyles = createGlobalStyle`
   --color-white: hsl(0, 0%, 100%);
   --color-grey-500: hsl(186, 15%, 59%);
   --color-grey-900: hsl(187, 24%, 22%);
-
   --color-green-200: hsl(148, 38%, 91%);
   --color-green-600: hsl(169, 82%, 27%);
   --color-red: hsl(0, 66%, 54%);
@@ -61,9 +60,10 @@ body {
   font-weight: 400;
 }
 
-button, input {
+button, input, textarea {
   font-family: inherit;
 }
+
 `;
 
 export default GlobalStyles;
