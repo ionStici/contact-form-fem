@@ -56,7 +56,6 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
   font-family: 'Karla';
   font-weight: 400;
 }
