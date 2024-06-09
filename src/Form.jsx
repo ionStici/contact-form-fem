@@ -4,6 +4,7 @@ import Input from './components/Input';
 import QueryType from './components/QueryType';
 import Button from './components/Button';
 import FlexWrapper from './components/FlexWrapper';
+import Message from './components/Message';
 
 function Form() {
   const { register, handleSubmit, formState } = useForm();
@@ -37,6 +38,8 @@ function Form() {
       />
 
       <QueryType register={register} error={errors?.queryType?.message} />
+
+      <Message register={register} error={errors?.message?.message} />
 
       <Button />
     </form>
