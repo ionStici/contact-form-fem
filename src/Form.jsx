@@ -6,17 +6,33 @@ import Button from './components/Button';
 import FlexWrapper from './components/FlexWrapper';
 import Message from './components/Message';
 import Consent from './components/Consent';
+import toast from 'react-hot-toast';
+import ToastText from './components/Toast';
 
 function Form() {
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
 
+  const notify = () => {
+    toast.success(<ToastText />, {
+      duration: 5000,
+      style: {
+        maxWidth: '450px',
+        padding: '24px',
+        backgroundColor: 'var(--color-grey-900)',
+      },
+    });
+  };
+
   const onSubmit = data => {
     console.log(data);
     reset();
+    notify();
   };
 
-  const onError = err => console.log(err);
+  const onError = err => {
+    console.log(err);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)}>
