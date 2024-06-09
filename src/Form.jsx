@@ -1,91 +1,50 @@
 import styled from 'styled-components';
+
 import { useForm } from 'react-hook-form';
 
-import Fieldset from './components/Fieldset';
-import MessageField from './components/MessageField';
+import Input from './components/Input';
+import Button from './components/Button';
+
+const Wrapper = styled.div`
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    gap: 1.6rem;
+  }
+`;
 
 function Form() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm();
+  const { errors } = formState;
 
-  const onSubmit = data => {
-    console.log(data);
-  };
-
-  const onError = err => {
-    console.log(err);
-  };
+  const onSubmit = data => console.log(data);
+  const onError = err => console.log(err);
 
   return (
-    <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
-      <div>
-        <Box>
-          <Label htmlFor="first-name">
-            First Name
-            <span>*</span>
-          </Label>
-          <Input type="text" id="first-name" />
-        </Box>
-        <Box>
-          <Label htmlFor="last-name">
-            Last Name
-            <span>*</span>
-          </Label>
-          <Input type="text" id="last-name" />
-        </Box>
-      </div>
+    <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <Wrapper>
+        <Input
+          label="First Name"
+          id="firstName"
+          register={register}
+          error={errors?.firstName?.message}
+        />
+        <Input
+          label="Last Name"
+          id="lastName"
+          register={register}
+          error={errors?.lastName?.message}
+        />
+      </Wrapper>
+      <Input
+        label="Email Address"
+        id="email"
+        register={register}
+        error={errors?.email?.message}
+      />
 
-      <Box>
-        <Label htmlFor="email">
-          Email Address
-          <span>*</span>
-        </Label>
-        <Input type="email" id="email" />
-      </Box>
-
-      <Fieldset register={register} />
-
-      <MessageField register={register} />
-
-      <Box>
-        <CheckboxInput type="checkbox" id="consent" />
-        <Label htmlFor="consent">
-          I consent to being contacted by the team
-          <span>*</span>
-        </Label>
-      </Box>
-
-      <button>Submit</button>
-    </StyledForm>
+      <Button />
+    </form>
   );
 }
 
 export default Form;
-
-const StyledForm = styled.form``;
-
-const Label = styled.label`
-  width: fit-content;
-  margin-bottom: 0.8rem;
-
-  font-size: 1.6rem;
-  color: var(--color-grey-900);
-
-  span {
-    color: var(--color-green-600);
-    margin-left: 0.8rem;
-  }
-`;
-
-const Input = styled.input`
-  height: 5.1rem;
-  border: 1px solid var(--color-grey-500);
-  border-radius: 0.8rem;
-`;
-
-const CheckboxInput = styled.input``;
-
-const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2.4rem;
-`;
