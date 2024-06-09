@@ -8,7 +8,7 @@ const Box = styled.div`
   margin-bottom: 2.4rem;
 `;
 
-const Label = styled.label`
+export const Label = styled.label`
   font-size: 1.6rem;
   color: var(--color-grey-900);
   margin-bottom: 0.8rem;
@@ -29,8 +29,8 @@ const StyledInput = styled.input.attrs({ type: 'text' })`
   cursor: pointer;
   transition: border-color 0.25s;
 
-  ${({ error }) =>
-    error &&
+  ${({ $error }) =>
+    $error &&
     css`
       border-color: var(--color-red);
     `}
@@ -54,7 +54,7 @@ function Input({ label, id, register, error }) {
       </Label>
       <StyledInput
         id={id}
-        error={error}
+        $error={error}
         {...register(id, {
           required: 'This field is required',
           pattern:

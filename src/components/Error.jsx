@@ -15,7 +15,7 @@ const fadeIn = keyframes`
 `;
 
 const StyledError = styled.span`
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--color-red);
 
   display: inline-block;

@@ -1,19 +1,12 @@
-import styled from 'styled-components';
-
 import { useForm } from 'react-hook-form';
 
 import Input from './components/Input';
+import QueryType from './components/QueryType';
 import Button from './components/Button';
-
-const Wrapper = styled.div`
-  @media only screen and (min-width: 768px) {
-    display: flex;
-    gap: 1.6rem;
-  }
-`;
+import FlexWrapper from './components/FlexWrapper';
 
 function Form() {
-  const { register, handleSubmit, formState } = useForm();
+  const { register, handleSubmit, watch, formState } = useForm();
   const { errors } = formState;
 
   const onSubmit = data => console.log(data);
@@ -21,7 +14,7 @@ function Form() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)}>
-      <Wrapper>
+      <FlexWrapper>
         <Input
           label="First Name"
           id="firstName"
@@ -34,12 +27,19 @@ function Form() {
           register={register}
           error={errors?.lastName?.message}
         />
-      </Wrapper>
+      </FlexWrapper>
+
       <Input
         label="Email Address"
         id="email"
         register={register}
         error={errors?.email?.message}
+      />
+
+      <QueryType
+        register={register}
+        error={errors?.queryType?.message}
+        selected={watch().queryType}
       />
 
       <Button />
