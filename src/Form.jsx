@@ -8,8 +8,24 @@ import Message from './components/Message';
 import Consent from './components/Consent';
 import toast from 'react-hot-toast';
 import ToastText from './components/Toast';
+import SpinnerComponent from './components/Spinner';
+import { useState } from 'react';
+
+// const defaultValues = {
+//   defaultValues: {
+//     firstName: 'John',
+//     lastName: 'Stich',
+//     email: 'contact@domain.dev',
+//     queryType: 'general-enquiry',
+//     message:
+//       "Hello, I would like to know if you're able to build Shopify e-commerce sites. We're starting a business and we're going to use Shopify. But it would be great to work with an agency who specialises in working with it.",
+//     consent: true,
+//   },
+// };
 
 function Form() {
+  const [showSpinner, setShowSpinner] = useState(false);
+
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
 
@@ -24,18 +40,18 @@ function Form() {
     });
   };
 
-  const onSubmit = data => {
-    console.log(data);
-    reset();
-    notify();
-  };
+  const onSubmit = () => {
+    setShowSpinner(true);
 
-  const onError = err => {
-    console.log(err);
+    setTimeout(() => {
+      setShowSpinner(false);
+      reset();
+      setTimeout(() => notify(), 150);
+    }, 1500);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit, onError)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <FlexWrapper>
         <Input
           label="First Name"
@@ -63,6 +79,8 @@ function Form() {
       <Message register={register} error={errors?.message?.message} />
 
       <Consent register={register} error={errors?.consent?.message} />
+
+      {showSpinner && <SpinnerComponent />}
 
       <Button />
     </form>

@@ -18,6 +18,10 @@ const Input = styled.input`
   flex-shrink: 0;
   accent-color: var(--color-green-600);
   cursor: pointer;
+
+  &:focus {
+    outline-color: var(--color-green-600);
+  }
 `;
 
 const Label = styled(LabelStyles)`

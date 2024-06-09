@@ -31,6 +31,10 @@ const Textarea = styled.textarea`
     height: 13.2rem;
   }
 
+  @media only screen and (min-width: 1100px) {
+    height: 10.5rem;
+  }
+
   &:hover,
   &:focus {
     border-color: var(--color-green-600);
