@@ -32,6 +32,7 @@ const Section = styled.section`
   margin: 0 auto;
   border-radius: 1.6rem;
   background-color: var(--color-white);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   @media only screen and (min-width: 768px) {
     padding: 4rem;

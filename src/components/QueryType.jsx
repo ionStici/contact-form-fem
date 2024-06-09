@@ -55,6 +55,7 @@ const Fieldset = styled.fieldset`
 
 const Legend = styled(LabelStyles)`
   margin-bottom: 1.6rem;
+  cursor: revert;
 `;
 
 const Label = styled.label`

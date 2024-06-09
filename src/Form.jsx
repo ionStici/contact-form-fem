@@ -5,12 +5,17 @@ import QueryType from './components/QueryType';
 import Button from './components/Button';
 import FlexWrapper from './components/FlexWrapper';
 import Message from './components/Message';
+import Consent from './components/Consent';
 
 function Form() {
-  const { register, handleSubmit, formState } = useForm();
+  const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    console.log(data);
+    reset();
+  };
+
   const onError = err => console.log(err);
 
   return (
@@ -40,6 +45,8 @@ function Form() {
       <QueryType register={register} error={errors?.queryType?.message} />
 
       <Message register={register} error={errors?.message?.message} />
+
+      <Consent register={register} error={errors?.consent?.message} />
 
       <Button />
     </form>

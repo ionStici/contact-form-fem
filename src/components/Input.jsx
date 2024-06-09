@@ -12,6 +12,7 @@ export const Label = styled.label`
   font-size: 1.6rem;
   color: var(--color-grey-900);
   margin-bottom: 0.8rem;
+  cursor: pointer;
 
   span:nth-child(2) {
     margin-left: 0.8rem;
