@@ -1,9 +1,15 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Error from './Error';
 import FlexWrapper from './FlexWrapper';
 import { Label as LabelStyles } from './Input';
 
-export default function QueryType({ register, error }) {
+export default function QueryType({ register, error, setValue }) {
+  const handleKeydown = e => {
+    if (e.key !== 'Enter') return;
+    const value = e.target.querySelector('input').value;
+    setValue('queryType', value);
+  };
+
   return (
     <Fieldset>
       <Legend as="legend">
@@ -12,7 +18,7 @@ export default function QueryType({ register, error }) {
       </Legend>
 
       <FlexWrapper>
-        <Label htmlFor="generalEnquiry">
+        <Label htmlFor="generalEnquiry" tabIndex="0" onKeyDown={handleKeydown}>
           <Input
             type="radio"
             id="generalEnquiry"
@@ -27,7 +33,7 @@ export default function QueryType({ register, error }) {
           <Text>General Enquiry</Text>
         </Label>
 
-        <Label htmlFor="supportRequest">
+        <Label htmlFor="supportRequest" tabIndex="0" onKeyDown={handleKeydown}>
           <Input
             type="radio"
             id="supportRequest"
@@ -67,8 +73,13 @@ const Label = styled.label`
   position: relative;
   cursor: pointer;
 
-  &:hover .background {
+  &:hover .background,
+  &:focus .background {
     border-color: var(--color-green-600);
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &:first-of-type {

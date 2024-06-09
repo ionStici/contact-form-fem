@@ -26,7 +26,7 @@ import { useState } from 'react';
 function Form() {
   const [showSpinner, setShowSpinner] = useState(false);
 
-  const { register, handleSubmit, formState, reset } = useForm();
+  const { register, handleSubmit, setValue, formState, reset } = useForm();
   const { errors } = formState;
 
   const notify = () => {
@@ -74,7 +74,11 @@ function Form() {
         error={errors?.email?.message}
       />
 
-      <QueryType register={register} error={errors?.queryType?.message} />
+      <QueryType
+        register={register}
+        error={errors?.queryType?.message}
+        setValue={setValue}
+      />
 
       <Message register={register} error={errors?.message?.message} />
 
