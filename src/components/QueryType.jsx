@@ -3,26 +3,7 @@ import Error from './Error';
 import FlexWrapper from './FlexWrapper';
 import { Label as LabelStyles } from './Input';
 
-const Fieldset = styled.fieldset`
-  border: none;
-  margin-bottom: 2.4rem;
-`;
-
-const Legend = styled(LabelStyles)`
-  margin-bottom: 1.6rem;
-`;
-
-const activeBox = {
-  borderColor: 'var(--color-green-600)',
-  backgroundColor: 'var(--color-green-200)',
-};
-
-export default function QueryType({ register, error, selected }) {
-  const handleKeydown = e => {
-    if (e.key !== 'Enter') return;
-    e.target.querySelector('input').checked = true;
-  };
-
+export default function QueryType({ register, error }) {
   return (
     <Fieldset>
       <Legend as="legend">
@@ -31,13 +12,8 @@ export default function QueryType({ register, error, selected }) {
       </Legend>
 
       <FlexWrapper>
-        <Label
-          htmlFor="generalEnquiry"
-          tabIndex="0"
-          onKeyDown={handleKeydown}
-          style={selected === 'general-enquiry' ? activeBox : {}}
-        >
-          <input
+        <Label htmlFor="generalEnquiry">
+          <Input
             type="radio"
             id="generalEnquiry"
             name="queryType"
@@ -47,16 +23,12 @@ export default function QueryType({ register, error, selected }) {
             })}
           />
           <RadioButton />
-          <span>General Enquiry</span>
+          <Background />
+          <Text>General Enquiry</Text>
         </Label>
 
-        <Label
-          htmlFor="supportRequest"
-          tabIndex="0"
-          onKeyDown={handleKeydown}
-          style={selected === 'support-request' ? activeBox : {}}
-        >
-          <input
+        <Label htmlFor="supportRequest">
+          <Input
             type="radio"
             id="supportRequest"
             name="queryType"
@@ -66,7 +38,8 @@ export default function QueryType({ register, error, selected }) {
             })}
           />
           <RadioButton />
-          <span>Support Request</span>
+          <Background />
+          <Text>Support Request</Text>
         </Label>
       </FlexWrapper>
 
@@ -75,23 +48,26 @@ export default function QueryType({ register, error, selected }) {
   );
 }
 
+const Fieldset = styled.fieldset`
+  border: none;
+  margin-bottom: 2.4rem;
+`;
+
+const Legend = styled(LabelStyles)`
+  margin-bottom: 1.6rem;
+`;
+
 const Label = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 5.1rem;
-  border: 1px solid var(--color-grey-500);
-  border-radius: 0.8rem;
-  font-size: 1.8rem;
-  color: var(--color-grey-900);
+  position: relative;
   cursor: pointer;
-  transition: border-color 0.25s, background-color 0.25s;
 
-  &:hover,
-  &:focus {
+  &:hover .background {
     border-color: var(--color-green-600);
-    outline: none;
   }
 
   &:first-of-type {
@@ -101,22 +77,22 @@ const Label = styled.label`
       margin-bottom: 0;
     }
   }
+`;
 
-  span {
-    width: 14rem;
-    margin-left: 1.45rem;
-  }
+const Input = styled.input`
+  display: none;
 
-  input {
-    display: none;
-  }
-
-  input:checked ~ .radioButton {
+  &:checked ~ .radioButton {
     border-color: var(--color-green-600);
   }
 
-  input:checked ~ .radioButton::after {
+  &:checked ~ .radioButton::after {
     background-color: var(--color-green-600);
+  }
+
+  &:checked ~ .background {
+    border-color: var(--color-green-600);
+    background-color: var(--color-green-200);
   }
 `;
 
@@ -128,6 +104,7 @@ const RadioButton = styled.div.attrs({ className: 'radioButton' })`
   border: 0.2rem solid var(--color-grey-500);
   position: relative;
   transition: border-color 0.3s;
+  z-index: 1;
 
   &::after {
     content: '';
@@ -141,4 +118,25 @@ const RadioButton = styled.div.attrs({ className: 'radioButton' })`
     border-radius: 50%;
     transition: background-color 0.3s;
   }
+`;
+
+const Background = styled.div.attrs({ className: 'background' })`
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid var(--color-grey-500);
+  transition: border-color 0.25s, background-color 0.25s;
+`;
+
+const Text = styled.span`
+  font-size: 1.8rem;
+  color: var(--color-grey-900);
+  width: 14rem;
+  margin-left: 1.45rem;
+  z-index: 1;
 `;

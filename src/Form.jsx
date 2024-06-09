@@ -6,7 +6,7 @@ import Button from './components/Button';
 import FlexWrapper from './components/FlexWrapper';
 
 function Form() {
-  const { register, handleSubmit, watch, formState } = useForm();
+  const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
 
   const onSubmit = data => console.log(data);
@@ -36,11 +36,7 @@ function Form() {
         error={errors?.email?.message}
       />
 
-      <QueryType
-        register={register}
-        error={errors?.queryType?.message}
-        selected={watch().queryType}
-      />
+      <QueryType register={register} error={errors?.queryType?.message} />
 
       <Button />
     </form>
