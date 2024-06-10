@@ -72,10 +72,12 @@ const Label = styled.label`
   height: 5.1rem;
   position: relative;
   cursor: pointer;
+  transition: border-color 0.25s, box-shadow 0.25s;
 
   &:hover .background,
   &:focus .background {
     border-color: var(--color-green-600);
+    box-shadow: rgba(12, 125, 105, 0.25) 0px 2px 4px 0px inset;
   }
 
   &:focus {

@@ -11,17 +11,8 @@ import ToastText from './components/Toast';
 import SpinnerComponent from './components/Spinner';
 import { useState } from 'react';
 
-// const defaultValues = {
-//   defaultValues: {
-//     firstName: 'John',
-//     lastName: 'Stich',
-//     email: 'contact@domain.dev',
-//     queryType: 'general-enquiry',
-//     message:
-//       "Hello, I would like to know if you're able to build Shopify e-commerce sites. We're starting a business and we're going to use Shopify. But it would be great to work with an agency who specialises in working with it.",
-//     consent: true,
-//   },
-// };
+// prettier-ignore
+const defaultValues = { defaultValues: { firstName: 'John', lastName: 'Stich', email: 'contact@domain.dev', queryType: 'general-enquiry', message: "Hello, I would like to know if you're able to build Shopify e-commerce sites. We're starting a business and we're going to use Shopify. But it would be great to work with an agency who specialises in working with it.", consent: true, }, };
 
 function Form() {
   const [showSpinner, setShowSpinner] = useState(false);

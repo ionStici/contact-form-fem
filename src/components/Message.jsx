@@ -20,6 +20,7 @@ const Textarea = styled.textarea`
   font-size: 1.8rem;
   color: var(--color-grey-900);
   cursor: pointer;
+  transition: border-color 0.25s, box-shadow 0.25s;
 
   ${({ $error }) =>
     $error &&
@@ -38,6 +39,7 @@ const Textarea = styled.textarea`
   &:hover,
   &:focus {
     border-color: var(--color-green-600);
+    box-shadow: rgba(12, 125, 105, 0.25) 0px 2px 4px 0px inset;
     outline: none;
   }
 `;

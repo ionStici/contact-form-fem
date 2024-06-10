@@ -17,9 +17,10 @@ const fadeIn = keyframes`
 const StyledError = styled.span`
   font-size: 1.5rem;
   color: var(--color-red);
-
+  margin-top: 0;
+  height: 0;
   display: inline-block;
-  animation: ${fadeIn} 0.25s ease-in-out;
+  animation: ${fadeIn} 0.25s;
   animation-fill-mode: forwards;
 `;
 
