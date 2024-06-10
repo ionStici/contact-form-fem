@@ -42,28 +42,28 @@ Error generating stack: `+l.message+`
 
 @font-face {
     font-family: 'Karla';
-    src: url('/assets/fonts/static/Karla-Bold.ttf') format('truetype');
+    src: url('/fonts/static/Karla-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Karla';
-    src: url('/assets/fonts/static/Karla-Regular.ttf') format('truetype');
+    src: url('/fonts/static/Karla-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Karla';
-    src: url('/assets/fonts/Karla-Italic-VariableFont_wght.ttf') format('truetype');
+    src: url('/fonts/Karla-Italic-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Karla';
-    src: url('/assets/fonts/Karla-VariableFont_wght.ttf') format('truetype');
+    src: url('/fonts/Karla-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
