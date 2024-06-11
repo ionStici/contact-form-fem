@@ -2,34 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 
-@font-face {
-    font-family: 'Karla';
-    src: url('/fonts/static/Karla-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Karla';
-    src: url('/fonts/static/Karla-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Karla';
-    src: url('/fonts/Karla-Italic-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Karla';
-    src: url('/fonts/Karla-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 :root {
   --color-white: hsl(0, 0%, 100%);
   --color-grey-500: hsl(186, 15%, 59%);
@@ -56,7 +28,7 @@ html {
 }
 
 body {
-  font-family: 'Karla';
+  font-family: "Karla", sans-serif;
   font-weight: 400;
 }
 
@@ -67,3 +39,31 @@ button, input, textarea {
 `;
 
 export default GlobalStyles;
+
+// @font-face {
+//   font-family: 'Karla';
+//   src: url('./../fonts/static/Karla-Bold.ttf') format('truetype');
+//   font-weight: bold;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: 'Karla';
+//   src: url('./../fonts/static/Karla-Regular.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: 'Karla';
+//   src: url('./../fonts/Karla-Italic-VariableFont_wght.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: italic;
+// }
+
+// @font-face {
+//   font-family: 'Karla';
+//   src: url('./../fonts/Karla-VariableFont_wght.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
